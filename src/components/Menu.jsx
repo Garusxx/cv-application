@@ -1,32 +1,77 @@
 import Glitch from "../UI/Glitch";
+import { useEffect, useState } from "react";
 
 import BackgroundImage from "../../public/images/bg-image.png";
+import sound from "../../public/sounds/poem-soundroll-main-version-4328-02-33.wav";
 
 export const Menu = (props) => {
   const { onSectionChange, menuOpened, setMenuOpened } = props;
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.1);
+  const [audio] = useState(new Audio(sound));
+
+  useEffect(() => {
+    audio.volume = volume;
+
+    const playAudio = () => {
+      audio.play();
+      // Remove event listener after play
+      document.removeEventListener("click", playAudio);
+      document.removeEventListener("touchstart", playAudio);
+    };
+
+    // Play audio after user interaction
+    document.addEventListener("click", playAudio);
+    document.addEventListener("touchstart", playAudio);
+
+    // Clean up function
+    return () => {
+      document.removeEventListener("click", playAudio);
+      document.removeEventListener("touchstart", playAudio);
+    };
+  }, [audio, volume]);
+
+  const togglePlay = () => {
+    const newIsPlaying = !isPlaying;
+    setIsPlaying(newIsPlaying);
+    if (newIsPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+  };
 
   return (
     <>
-      <button
-        onClick={() => setMenuOpened(!menuOpened)}
-        className="z-20 fixed top-5 mid:top-12 right-5 md:right-12 p-3 bg-indigo-600 w-11 h-11 rounded-md"
-      >
-        <div
-          className={`bg-white h-0.5 rounded-md w-full transition-all ${
-            menuOpened ? "rotate-45  translate-y-0.5" : ""
-          }`}
-        />
-        <div
-          className={`bg-white h-0.5 rounded-md w-full my-1 ${
-            menuOpened ? "hidden" : ""
-          }`}
-        />
-        <div
-          className={`bg-white h-0.5 rounded-md w-full transition-all ${
-            menuOpened ? "-rotate-45" : ""
-          }`}
-        />
-      </button>
+      <div className="z-20 fixed top-5 mid:top-12 right-5 md:right-12 flex space-x-2">
+        <button
+          className="flex items-center justify-center p-3 bg-indigo-600 w-11 h-11 rounded-md text-white text-2xl"
+          onClick={togglePlay}
+        >
+          <span className="transform -translate-y-1">♫</span>
+        </button>
+        <button
+          onClick={() => setMenuOpened(!menuOpened)}
+          className=" p-3 bg-indigo-600 w-11 h-11 rounded-md"
+        >
+          <div
+            className={`bg-white h-0.5 rounded-md w-full transition-all ${
+              menuOpened ? "rotate-45  translate-y-0.5" : ""
+            }`}
+          />
+          <div
+            className={`bg-white h-0.5 rounded-md w-full my-1 ${
+              menuOpened ? "hidden" : ""
+            }`}
+          />
+          <div
+            className={`bg-white h-0.5 rounded-md w-full transition-all ${
+              menuOpened ? "-rotate-45" : ""
+            }`}
+          />
+        </button>
+      </div>
+
       <div
         className={`z-10 fixed top-0 right-0 bottom-0 transition-all overflow-hidden flex flex-col
       ${menuOpened ? "w-[100%] md:w-2/5 lg:w-1/5" : "w-0"}`}

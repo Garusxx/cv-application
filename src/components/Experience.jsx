@@ -25,6 +25,7 @@ export const Experience = (props) => {
 
   const cameraPositionX = useMotionValue();
   const cameraLookAtX = useMotionValue();
+  
 
   useEffect(() => {
     if (section === 0) {
@@ -82,7 +83,6 @@ export const Experience = (props) => {
             y: -viewport.height * 2,
             x: 6,
             z: 6,
-          
           },
           3: {
             y: -viewport.height * 3 - 2,
