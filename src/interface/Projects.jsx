@@ -105,13 +105,13 @@ const Project = ({ projects }) => {
           <h4 className="mt-1 font-semibold uppercase leading-tight truncate">
             <Glitch
               text={projects[currentIndex].title}
-              largeFontSize={"2rem"}
+              largeFontSize={"1.5rem"}
               midFontSize={"1rem"}
-              smallFontSize={"1rem"}
+              smallFontSize={"0.7rem"}
             />
           </h4>
 
-          <div className="mt-1 text-sm">{projects[currentIndex].description}</div>
+          <div className="mt-1 text-xs md:text-sm">{projects[currentIndex].description}</div>
           <div className="mt-4">
             <a
               href={projects[currentIndex].url}

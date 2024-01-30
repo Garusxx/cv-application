@@ -11,11 +11,11 @@ const AboutSection = (props) => {
 
   return (
     <section
-      className=" h-screen w-[70%] p-8 max-w-screen-2xl mx-auto
+      className=" h-screen w-[70%]  md:p-8 max-w-screen-2xl mx-auto
     flex flex-col items-start justify-center"
     >
       <LuminousBorder>
-        <h1 className="text-sm md:text-base lg:text-5xl  leading-snug">
+        <h1 className="text-sm md:text-base lg:text-5xl leading-snug">
           <Glitch
             text="Rafal Zakzrewski"
             h1="Hi, I'm"
