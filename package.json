@@ -8,10 +8,12 @@
     "build": "vite build",
     "preview": "vite preview"
   },
+  "proxy": "http://localhost:4000",
   "dependencies": {
     "@react-three/drei": "9.75.0",
     "@react-three/fiber": "8.13.3",
     "@react-three/postprocessing": "^2.15.12",
+    "axios": "^1.6.7",
     "framer-motion": "^10.12.16",
     "framer-motion-3d": "^10.12.16",
     "gltfjsx": "^6.2.16",

@@ -1,34 +1,12 @@
 import Section from "./Section";
 import { motion } from "framer-motion";
-import { Border } from "../UI/UIelements";
+
 
 import "nes.css/css/nes.min.css";
 import "../index.css";
 import Glitch from "../UI/Glitch";
 import LuminousBorder from "../UI/LuminousBorder";
 
-const skills = [
-  {
-    title: "JacaScript",
-    level: 90,
-  },
-  {
-    title: "React",
-    level: 80,
-  },
-  {
-    title: "Nodejs",
-    level: 80,
-  },
-  {
-    title: "CSS",
-    level: 60,
-  },
-  {
-    title: "Threejs",
-    level: 20,
-  },
-];
 const languages = [
   {
     title: "🇵🇱 Polski",
@@ -40,7 +18,11 @@ const languages = [
   },
 ];
 
-const SkillsSection = () => {
+const SkillsSection = (props) => {
+
+  const { skillData } = props;
+
+
   return (
     <Section>
       <LuminousBorder>
@@ -55,7 +37,7 @@ const SkillsSection = () => {
           </h2>
 
           <div className=" mt-8 space-y-4">
-            {skills.map((skill, index) => (
+            {skillData.map((skillData, index) => (
               <div className="w-64" key={index}>
                 <motion.h3
                   className="text-xl font-bold text-white"
@@ -72,12 +54,12 @@ const SkillsSection = () => {
                     },
                   }}
                 >
-                  {skill.title}
+                  {skillData.title}
                 </motion.h3>
                 <div className="nes-progress is-primary h-3">
                   <motion.div
                     className="h-full bg-indigo-500 "
-                    style={{ width: `${skill.level}%` }}
+                    style={{ width: `${skillData.level}%` }}
                     initial={{
                       scaleX: 0,
                       originX: 0,
