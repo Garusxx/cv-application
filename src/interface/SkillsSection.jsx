@@ -7,20 +7,9 @@ import "../index.css";
 import Glitch from "../UI/Glitch";
 import LuminousBorder from "../UI/LuminousBorder";
 
-const languages = [
-  {
-    title: "🇵🇱 Polski",
-    level: 100,
-  },
-  {
-    title: "🇬🇧 English",
-    level: 60,
-  },
-];
-
 const SkillsSection = (props) => {
 
-  const { skillData } = props;
+  const { skillData, languagesData } = props;
 
 
   return (
@@ -89,7 +78,7 @@ const SkillsSection = (props) => {
               />
             </h2>
             <div className=" mt-8 space-y-4">
-              {languages.map((lng, index) => (
+              {languagesData.map((languagesData, index) => (
                 <div className="w-64" key={index}>
                   <motion.h3
                     className="text-xl font-bold text-white"
@@ -106,12 +95,12 @@ const SkillsSection = (props) => {
                       },
                     }}
                   >
-                    {lng.title}
+                    {languagesData.title}
                   </motion.h3>
                   <div className=" nes-progress is-primary h-3">
                     <motion.div
                       className=" h-full bg-indigo-500 rounded-full "
-                      style={{ width: `${lng.level}%` }}
+                      style={{ width: `${languagesData.level}%` }}
                       initial={{
                         scaleX: 0,
                         originX: 0,

@@ -1,59 +1,11 @@
 import Section from "./Section";
 
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import { motion } from "framer-motion";
-
-import ReactFoodImage from "../../public/images/react-food-app.jpg";
-import ReactMapImage from "../../public/images/map-react.jpg";
-import ReactSpendImage from "../../public/images/spend-track-app.jpg";
 import Glitch from "../UI/Glitch";
-import { Border } from "../UI/UIelements";
 import LuminousBorder from "../UI/LuminousBorder";
 
 import NextIcont from "../../public/ikons/next.png";
-
-const projects = [
-  {
-    title: "react-food-app",
-    url: "https://github.com/Garusxx/react-food-app",
-    image: ReactFoodImage,
-    description: "Simplifies food ordering with React",
-  },
-  {
-    title: "map-react",
-    url: "https://github.com/Garusxx/map-react",
-    image: ReactMapImage,
-    description:
-      "map-react is a React-based application integrated with Google Maps and MongoDB.",
-  },
-  {
-    title: "spend-track-app",
-    url: "https://github.com/Garusxx/spend-track-app",
-    image: ReactSpendImage,
-    description:
-      "spend-track-app: React-based, minimalist expense monitoring for the year. Log and track your spending effortlessly.",
-  },
-  {
-    title: "react-food-app",
-    url: "https://github.com/Garusxx/react-food-app",
-    image: ReactFoodImage,
-    description: "Simplifies food ordering with React",
-  },
-  {
-    title: "map-react",
-    url: "https://github.com/Garusxx/map-react",
-    image: ReactMapImage,
-    description:
-      "map-react is a React-based application integrated with Google Maps and MongoDB.",
-  },
-  {
-    title: "spend-track-app",
-    url: "https://github.com/Garusxx/spend-track-app",
-    image: ReactSpendImage,
-    description:
-      "spend-track-app: React-based, minimalist expense monitoring for the year. Log and track your spending effortlessly.",
-  },
-];
 
 const Project = ({ projects }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -136,11 +88,13 @@ const Project = ({ projects }) => {
   );
 };
 
-const Projects = () => {
+const Projects = ({projectsData}) => {
+  console.log(projectsData);
+  console.log(projectsData[0].image)
   return (
     <Section>
       <div className="w-[100%] h-[100%] mt-30 flex items-center justify-center">
-        <Project projects={projects} />
+        <Project projects={projectsData} />
       </div>
     </Section>
   );
