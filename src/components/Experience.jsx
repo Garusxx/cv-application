@@ -7,12 +7,12 @@ import { framerMotionConfig } from "../config";
 import * as THREE from "three";
 
 import { Char } from "./3D_Components/Char";
-import { Float, useScroll, Trail } from "@react-three/drei";
+import { Float, useScroll, Trail, useTexture, Environment } from "@react-three/drei";
 import { Background } from "./Background ";
 import { Lab } from "./3D_Components/Lab";
 import { Laser } from "./3D_Components/Laser";
 import { Drone } from "./3D_Components/Drone";
-import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import { CampingAsset } from "./3D_Components/CampingAsset";
 
 export const Experience = (props) => {
   const { menuOpened } = props;
@@ -25,7 +25,12 @@ export const Experience = (props) => {
 
   const cameraPositionX = useMotionValue();
   const cameraLookAtX = useMotionValue();
-  
+
+  const meshRef = useRef();
+
+  const texture = useTexture(
+    "textures/Anime_equirectangular-jpg_a_world_full_of_2005343437_10105240.jpg"
+  );
 
   useEffect(() => {
     if (section === 0) {
@@ -52,18 +57,18 @@ export const Experience = (props) => {
       setSection(curSection);
     }
 
+    if (meshRef.current) {
+      meshRef.current.rotation.y += 0.001;
+    }
+
     state.camera.position.x = cameraPositionX.get();
     state.camera.lookAt(new THREE.Vector3(cameraLookAtX.get(), 0, 0));
   });
 
   return (
     <>
-      <Background />
-      <ambientLight intensity={1} />
-      {/* <ShootingStar />
-      <EffectComposer>
-        <Bloom mipmapBlur luminanceThreshold={1} />
-      </EffectComposer> */}
+      <ambientLight intensity={0.5} />
+      <Environment preset="sunset" />
       <motion.group
         position={[-1, 0.2, 1.3]}
         rotation={[0, 10 * (Math.PI / 180), 0]}
@@ -152,13 +157,21 @@ export const Experience = (props) => {
         </motion.group>
       </motion.group>
 
+      <motion.group position={[0, -60, -30]} rotateY={120 * (Math.PI / 180)}>
+        <mesh ref={meshRef}>
+          <sphereGeometry args={[100, 32, 32]} />
+          <meshStandardMaterial map={texture} side={THREE.BackSide} />
+        </mesh>
+  
+      </motion.group>
+
       <motion.group
-        position={[2, 0, -2]}
+        position={[0, 0, 4]}
         animate={{
           y: section === 0 ? 0 : -1,
         }}
       >
-        <Lab />
+       <CampingAsset />
       </motion.group>
     </>
   );

@@ -20,11 +20,9 @@ export const Menu = (props) => {
       document.removeEventListener("touchstart", playAudio);
     };
 
-    // Play audio after user interaction
     document.addEventListener("click", playAudio);
     document.addEventListener("touchstart", playAudio);
 
-    // Clean up function
     return () => {
       document.removeEventListener("click", playAudio);
       document.removeEventListener("touchstart", playAudio);
