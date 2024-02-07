@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
+import { Float} from "@react-three/drei";
 
 export function CampingAsset(props) {
   const { nodes, materials } = useGLTF("models/campingAsset.glb");
@@ -833,12 +834,16 @@ export function CampingAsset(props) {
         geometry={nodes.mesh812894768_4.geometry}
         material={materials.mat17}
       />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.mesh1806556219.geometry}
-        material={materials.mat20}
-      />
+      <Float distance={1} speed={6}>
+        {" "}
+        <mesh
+          castShadow
+          receiveShadow
+          geometry={nodes.mesh1806556219.geometry}
+          material={materials.mat20}
+        />
+      </Float>
+
       <mesh
         castShadow
         receiveShadow

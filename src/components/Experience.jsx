@@ -7,12 +7,16 @@ import { framerMotionConfig } from "../config";
 import * as THREE from "three";
 
 import { Char } from "./3D_Components/Char";
-import { Float, useScroll, Trail, useTexture, Environment } from "@react-three/drei";
-import { Background } from "./Background ";
-import { Lab } from "./3D_Components/Lab";
+import {
+  Float,
+  useScroll,
+  Trail,
+  useTexture,
+  Environment,
+} from "@react-three/drei";
 import { Laser } from "./3D_Components/Laser";
 import { Drone } from "./3D_Components/Drone";
-import { CampingAsset } from "./3D_Components/CampingAsset";
+import { Camp } from "./3D_Components/Camp";
 
 export const Experience = (props) => {
   const { menuOpened } = props;
@@ -67,7 +71,7 @@ export const Experience = (props) => {
 
   return (
     <>
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.2} />
       <Environment preset="sunset" />
       <motion.group
         position={[-1, 0.2, 1.3]}
@@ -162,16 +166,13 @@ export const Experience = (props) => {
           <sphereGeometry args={[100, 32, 32]} />
           <meshStandardMaterial map={texture} side={THREE.BackSide} />
         </mesh>
-  
       </motion.group>
 
       <motion.group
-        position={[0, 0, 4]}
-        animate={{
-          y: section === 0 ? 0 : -1,
-        }}
+        position={[1, 2, 3]}
+        rotateZ={30 * (Math.PI / 180)}
       >
-       <CampingAsset />
+        <Camp />
       </motion.group>
     </>
   );
