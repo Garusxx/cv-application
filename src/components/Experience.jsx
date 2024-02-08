@@ -79,27 +79,24 @@ export const Experience = (props) => {
         animate={"" + section}
         variants={{
           0: {
-            scale: [0.9, 0.9, 0.9],
+            scale: [0.8, 0.8, 0.8],
           },
           1: {
-            y: -viewport.height,
-            x: 1.5,
-            z: 1.5,
-            scale: [1.8, 1.8, 1.8],
+            y: -viewport.height + 2.8,
+            x: 0.8,
+            z: 6,
             rotateY: -20 * (Math.PI / 180),
           },
           2: {
-            y: -viewport.height * 2,
-            x: -3.2,
+            y: -viewport.height * 2 + 1,
+            x: -4,
             z: 3,
-            scale: [0.4, 0.4, 0.4],
             rotateY: 50 * (Math.PI / 180),
           },
           3: {
-            y: -viewport.height * 3 - 2,
-            x: 1,
-            z: 5,
-            scale: [3.2, 3.2, 3.2],
+            y: -viewport.height * 3 + 3.2,
+            x: -1.2,
+            z: 8,
             rotateY: -50 * (Math.PI / 180),
           },
         }}
@@ -117,9 +114,9 @@ export const Experience = (props) => {
                 ? skillAnimations[animationNr]
                 : section === 2
                   ? "Kneeling"
-                : section === 3
-                  ? "Standing"
-                  : "Standing"
+                  : section === 3
+                    ? "Standing"
+                    : "Standing"
           }
         />
         <motion.group
@@ -128,9 +125,9 @@ export const Experience = (props) => {
           animate={"" + section}
           variants={{
             0: {
-              z: 4.5,
-              x: menuOpened ? -5 : -3,
-              y: menuOpened ? 3.2 : 3.1,
+              z: 5.5,
+              x: menuOpened ? -5.5 : -3,
+              y: menuOpened ? 3.7 : 3.5,
               rotateY: menuOpened
                 ? 175 * (Math.PI / 180)
                 : 220 * (Math.PI / 180),
@@ -141,17 +138,17 @@ export const Experience = (props) => {
               z: 0.6,
               x: -0.6,
               y: 2,
-              rotateY: 130 * (Math.PI / 180),
+              rotateY: 110 * (Math.PI / 180),
               rotateX: 40 * (Math.PI / 180),
-              rotateZ: -25 * (Math.PI / 180),
+              rotateZ: -15 * (Math.PI / 180),
             },
             2: {
-              z: -2.5,
-              x: 2,
-              y: -1,
-              rotateY: 40 * (Math.PI / 180),
-              rotateX: 35 * (Math.PI / 180),
-              rotateZ: 15 * (Math.PI / 180),
+              z: -0.5,
+              x: 0.5,
+              y: 3.8,
+              rotateY: 120 * (Math.PI / 180),
+              rotateX: 45 * (Math.PI / 180),
+              rotateZ: -10 * (Math.PI / 180),
             },
             3: {
               z: -2,
@@ -161,7 +158,6 @@ export const Experience = (props) => {
               rotateY: 120 * (Math.PI / 180),
               rotateX: 25 * (Math.PI / 180),
             },
-            
           }}
         >
           <Float distance={1} speed={6}>
@@ -189,18 +185,23 @@ export const Experience = (props) => {
             scale: [1, 1, 1],
           },
           1: {
-            y: -viewport.height + 1,
-            x: -1.8,
-            z: 2.2,
+            y: -viewport.height + 3,
+            x: -1,
+            z: 6,
             rotateY: 40 * (Math.PI / 180),
-            scale: [2, 2, 2],
+
           },
           2: {
-            y: -viewport.height * 2,
+            y: -viewport.height * 2 + 1,
             x: -1.8,
             z: 2.2,
             rotateY: -30 * (Math.PI / 180),
-            scale: [0.7, 0.7, 0.7],
+          },
+          3: {
+            y: -viewport.height * 3 + 2,
+            x: -1.8,
+            z: 2.2,
+            rotateY: 40 * (Math.PI / 180),
           },
         }}
         transition={{
@@ -214,28 +215,3 @@ export const Experience = (props) => {
     </>
   );
 };
-
-function ShootingStar() {
-  const ref = useRef();
-  useFrame((state) => {
-    const t = state.clock.getElapsedTime() * 2;
-    ref.current.position.set(
-      Math.sin(t) * 4,
-      Math.atan(t) * Math.cos(t / 2) * 2,
-      Math.cos(t) * 4
-    );
-  });
-  return (
-    <Trail
-      width={5}
-      length={8}
-      color={new THREE.Color(2, 1, 10)}
-      attenuation={(t) => t * t}
-    >
-      <mesh ref={ref}>
-        <sphereGeometry args={[0.25]} />
-        <meshBasicMaterial color={[10, 1, 10]} toneMapped={false} />
-      </mesh>
-    </Trail>
-  );
-}

@@ -7,7 +7,7 @@ import sound from "../../public/sounds/poem-soundroll-main-version-4328-02-33.wa
 export const Menu = (props) => {
   const { onSectionChange, menuOpened, setMenuOpened } = props;
   const [isPlaying, setIsPlaying] = useState(false);
-  const [volume, setVolume] = useState(0.1);
+  const [volume, setVolume] = useState(0.4);
   const [audio] = useState(new Audio(sound));
 
   useEffect(() => {

@@ -35,7 +35,7 @@ function App() {
             shadows={"percentage"}
             camera={{ position: [0, 5, 9], fov: 50 }}
           >
-            <ScrollControls pages={4} damping={0.1}>
+            <ScrollControls pages={4} damping={0.5}>
               <ScrollManager section={section} onSectionChange={setSection} />
               <Scroll>
                 <Experience section={section} menuOpened={menuOpened} />
