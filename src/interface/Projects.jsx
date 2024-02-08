@@ -1,6 +1,6 @@
 import Section from "./Section";
 
-import { useState} from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Glitch from "../UI/Glitch";
 import LuminousBorder from "../UI/LuminousBorder";
@@ -33,14 +33,21 @@ const Project = ({ projects }) => {
         <img
           src={NextIcont}
           alt="Previous slide"
-          style={{ transform: "scaleX(-1)" }}
+          style={{
+            transform: "scaleX(-1)",
+            filter: "invert(1) sepia(1) saturate(5) hue-rotate(90deg)",
+          }}
         />
       </motion.div>
-      <motion.img
-        src={projects[currentIndex].image}
-        alt={projects[currentIndex].title}
-        className="object-cover object-center rounded-lg w-[100%] h-[100%] md:w-4/5 md:h-4/5"
-      />
+      <LuminousBorder>
+        <div className="flex items-center justify-center h-full">
+          <motion.img
+            src={projects[currentIndex].image}
+            alt={projects[currentIndex].title}
+            className="object-cover object-center rounded-lg w-[100%] h-[100%] md:w-4/5 md:h-4/5"
+          />
+        </div>
+      </LuminousBorder>
 
       <motion.div
         key={currentIndex}
@@ -63,7 +70,9 @@ const Project = ({ projects }) => {
             />
           </h4>
 
-          <div className="mt-1 text-xs md:text-sm">{projects[currentIndex].description}</div>
+          <div className="mt-1 text-xs md:text-sm">
+            {projects[currentIndex].description}
+          </div>
           <div className="mt-4">
             <a
               href={projects[currentIndex].url}
@@ -82,15 +91,19 @@ const Project = ({ projects }) => {
         whileHover={{ scale: 1.4 }}
         whileTap={{ scale: 2 }}
       >
-        <img src={NextIcont} alt="Previous slide" />
+        <img
+          src={NextIcont}
+          alt="Previous slide"
+          style={{ filter: "invert(1) sepia(1) saturate(5) hue-rotate(90deg)" }}
+        />
       </motion.div>
     </div>
   );
 };
 
-const Projects = ({projectsData}) => {
+const Projects = ({ projectsData }) => {
   console.log(projectsData);
-  console.log(projectsData[0].image)
+  console.log(projectsData[0].image);
   return (
     <Section>
       <div className="w-[100%] h-[100%] mt-30 flex items-center justify-center">

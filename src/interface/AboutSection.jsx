@@ -14,7 +14,7 @@ const AboutSection = (props) => {
       className=" h-screen w-[70%]  md:p-8 max-w-screen-2xl mx-auto
     flex flex-col items-start justify-center"
     >
-      <div className="w-[60%]">
+      <div className="w-[100%] md:w-[60%]">
         {" "}
         <LuminousBorder>
           <h1 className="text-sm md:text-base lg:text-5xl leading-snug">
@@ -22,8 +22,8 @@ const AboutSection = (props) => {
               text="Rafal Zakzrewski"
               h1="Hi, I'm"
               largeFontSize={"3.5rem"}
-              midFontSize={"3rem"}
-              smallFontSize={"1.7rem"}
+              midFontSize={"1.5rem"}
+              smallFontSize={"1.2rem"}
             />
           </h1>
           <motion.p

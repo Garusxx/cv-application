@@ -40,11 +40,11 @@ export const Interface = (props) => {
     <div className="flex flex-col items-center w-screen">
       <AboutSection onSectionChange={() => onSectionChange(3)} />
       <SkillsSection skillData={skillData} languagesData={languagesData} />
-      {isLoading ? (
+      {/* {isLoading ? (
         <div>Loading...</div>
       ) : (
         <Projects projectsData={projectsData} />
-      )}
+      )} */}
       <ContactSection />
     </div>
   );

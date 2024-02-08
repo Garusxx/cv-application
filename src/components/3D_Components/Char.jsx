@@ -26,6 +26,17 @@ export function Char(props) {
   const { animations: guitarAnimation } = useFBX(
     "animations/Guitar Playing.fbx"
   );
+  const { animations: sittingRubbingArm } = useFBX(
+    "animations/Sitting Rubbing Arm.fbx"
+  );
+  const { animations: sittingIdle } = useFBX(
+    "animations/Sitting Idle.fbx"
+  );
+  const { animations: kneeling } = useFBX(
+    "animations/Kneeling.fbx"
+  );
+
+
   typingAnimation[0].name = "Typing";
   standingAnimation[0].name = "Standing";
   fallingAnimation[0].name = "Falling";
@@ -33,6 +44,10 @@ export function Char(props) {
   kickingAnimation[0].name = "Kicking";
   drumsAnimation[0].name = "Drums";
   guitarAnimation[0].name = "Guitar";
+  sittingRubbingArm[0].name = "Sitting";
+  sittingIdle[0].name = "Sitting Idle";
+  kneeling[0].name = "Kneeling";
+
 
   const { actions } = useAnimations(
     [
@@ -42,7 +57,10 @@ export function Char(props) {
       checkingAnimation[0],
       kickingAnimation[0],
       drumsAnimation[0],
-      guitarAnimation[0]
+      guitarAnimation[0],
+      sittingRubbingArm[0],
+      sittingIdle[0],
+      kneeling[0]
     ],
     group
   );

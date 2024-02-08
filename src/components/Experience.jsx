@@ -74,24 +74,26 @@ export const Experience = (props) => {
       <ambientLight intensity={0.2} />
       <Environment preset="sunset" />
       <motion.group
-        position={[-1, 0.2, 1.3]}
-        rotation={[0, 10 * (Math.PI / 180), 0]}
+        position={[2.5, 1.6, 4.4]}
+        rotation={[0, -40 * (Math.PI / 180), 0]}
         animate={"" + section}
         variants={{
           0: {
-            scale: [1.6, 1.6, 1.6],
+            scale: [0.9, 0.9, 0.9],
           },
           1: {
             y: -viewport.height,
-            x: 1.2,
-            z: 2,
-            scale: [2.2, 2.2, 2.2],
+            x: 1.5,
+            z: 1.5,
+            scale: [1.8, 1.8, 1.8],
             rotateY: -20 * (Math.PI / 180),
           },
           2: {
             y: -viewport.height * 2,
-            x: 6,
-            z: 6,
+            x: -3.2,
+            z: 3,
+            scale: [0.4, 0.4, 0.4],
+            rotateY: 50 * (Math.PI / 180),
           },
           3: {
             y: -viewport.height * 3 - 2,
@@ -101,13 +103,20 @@ export const Experience = (props) => {
             rotateY: -50 * (Math.PI / 180),
           },
         }}
+        transition={{
+          type: "spring",
+          stiffness: 20,
+          damping: 10,
+        }}
       >
         <Char
           animation={
             section === 0
-              ? "Dice"
+              ? "Sitting Idle"
               : section === 1
                 ? skillAnimations[animationNr]
+                : section === 2
+                  ? "Kneeling"
                 : section === 3
                   ? "Standing"
                   : "Standing"
@@ -119,20 +128,22 @@ export const Experience = (props) => {
           animate={"" + section}
           variants={{
             0: {
-              z: 1,
-              x: -2,
-              y: menuOpened ? 2.5 : 2.1,
+              z: 4.5,
+              x: menuOpened ? -5 : -3,
+              y: menuOpened ? 3.2 : 3.1,
               rotateY: menuOpened
-                ? 135 * (Math.PI / 180)
-                : 175 * (Math.PI / 180),
-              rotateX: menuOpened ? 30 * (Math.PI / 180) : 30 * (Math.PI / 180),
+                ? 175 * (Math.PI / 180)
+                : 220 * (Math.PI / 180),
+              rotateX: menuOpened ? 20 * (Math.PI / 180) : 30 * (Math.PI / 180),
+              rotateZ: menuOpened ? 30 * (Math.PI / 180) : 35 * (Math.PI / 180),
             },
             1: {
-              z: -1.7,
-              x: -0.5,
-              y: 1.5,
-              rotateY: 85 * (Math.PI / 180),
-              rotateX: 60 * (Math.PI / 180),
+              z: 0.6,
+              x: -0.6,
+              y: 2,
+              rotateY: 130 * (Math.PI / 180),
+              rotateX: 40 * (Math.PI / 180),
+              rotateZ: -25 * (Math.PI / 180),
             },
             2: {
               z: -2.5,
@@ -150,6 +161,7 @@ export const Experience = (props) => {
               rotateY: 120 * (Math.PI / 180),
               rotateX: 25 * (Math.PI / 180),
             },
+            
           }}
         >
           <Float distance={1} speed={6}>
@@ -170,7 +182,32 @@ export const Experience = (props) => {
 
       <motion.group
         position={[1, 2, 3]}
-        rotateZ={30 * (Math.PI / 180)}
+        rotation={[0, -20 * (Math.PI / 180), 0]}
+        animate={"" + section}
+        variants={{
+          0: {
+            scale: [1, 1, 1],
+          },
+          1: {
+            y: -viewport.height + 1,
+            x: -1.8,
+            z: 2.2,
+            rotateY: 40 * (Math.PI / 180),
+            scale: [2, 2, 2],
+          },
+          2: {
+            y: -viewport.height * 2,
+            x: -1.8,
+            z: 2.2,
+            rotateY: -30 * (Math.PI / 180),
+            scale: [0.7, 0.7, 0.7],
+          },
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 20,
+          damping: 10,
+        }}
       >
         <Camp />
       </motion.group>
