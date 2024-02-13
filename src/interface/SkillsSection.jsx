@@ -20,7 +20,7 @@ const SkillsSection = (props) => {
             <Glitch
               text="Skills"
               largeFontSize={"3rem"}
-              midFontSize={"2rem"}
+              midFontSize={"2.1rem"}
               smallFontSize={"1.5rem"}
             />
           </h2>
