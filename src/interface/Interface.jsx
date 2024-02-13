@@ -4,6 +4,7 @@ import ContactSection from "./ContactSection";
 import Projects from "./Projects";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import Glitch from "../UI/Glitch";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -25,11 +26,10 @@ export const Interface = (props) => {
           setSkillData(data.skills);
           setLanguagesData(data.languages);
           setProjectsData(data.projects);
+          setIsLoading(false);
         }
-        setIsLoading(false);
       } catch (error) {
         console.error("Error:", error);
-        setIsLoading(false);
       }
     };
 
@@ -41,7 +41,12 @@ export const Interface = (props) => {
       <AboutSection onSectionChange={() => onSectionChange(3)} />
       <SkillsSection skillData={skillData} languagesData={languagesData} />
       {isLoading ? (
-        <div>Loading...</div>
+        <Glitch
+        text={"Loading..."}
+        largeFontSize={"2.5rem"}
+        midFontSize={"1.5rem"}
+        smallFontSize={"1rem"}
+      />
       ) : (
         <Projects projectsData={projectsData} />
       )}

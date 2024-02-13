@@ -57,10 +57,6 @@ const Project = ({ projects }) => {
         transition={{ duration: 1 }}
       >
         <LuminousBorder>
-          {/* <div className="nes-badge">
-            <span className="is-success text-xs uppercase">Java</span>
-          </div> */}
-
           <h4 className="mt-1 font-semibold uppercase leading-tight truncate">
             <Glitch
               text={projects[currentIndex].title}
@@ -102,8 +98,6 @@ const Project = ({ projects }) => {
 };
 
 const Projects = ({ projectsData }) => {
-  console.log(projectsData);
-  console.log(projectsData[0].image);
   return (
     <Section>
       <div className="w-[100%] h-[100%] mt-30 flex items-center justify-center">
