@@ -20,7 +20,7 @@ export const Interface = (props) => {
     const fetchData = async () => {
       try {
         setIsLoading(true); // ustawienie stanu na true przed rozpoczęciem ładowania danych
-        const response = await axios.get("http://localhost:4000/");
+        const response = await axios.get("https://cv-back-mxac.onrender.com");
         const data = response.data;
         if (data) {
           setSkillData(data.skills);

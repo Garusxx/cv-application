@@ -10,6 +10,8 @@ export const Menu = (props) => {
   const [volume, setVolume] = useState(0.4);
   const [audio] = useState(new Audio(sound));
 
+  audio.loop = true;
+
   useEffect(() => {
     audio.volume = volume;
 
@@ -46,7 +48,7 @@ export const Menu = (props) => {
           className="flex items-center justify-center p-3 bg-indigo-600 w-11 h-11 rounded-md text-white text-2xl"
           onClick={togglePlay}
         >
-          <span className="transform -translate-y-1">♫</span>
+          <span className={`transform -translate-y-1 ${isPlaying ? 'text-black' : ''}`}>♫</span>
         </button>
         <button
           onClick={() => setMenuOpened(!menuOpened)}
