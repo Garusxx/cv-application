@@ -17,7 +17,6 @@ export const Menu = (props) => {
 
     const playAudio = () => {
       audio.play();
-      // Remove event listener after play
       document.removeEventListener("click", playAudio);
       document.removeEventListener("touchstart", playAudio);
     };

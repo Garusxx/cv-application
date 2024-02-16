@@ -41,12 +41,14 @@ export const Interface = (props) => {
       <AboutSection onSectionChange={() => onSectionChange(3)} />
       <SkillsSection skillData={skillData} languagesData={languagesData} />
       {isLoading ? (
-        <Glitch
-        text={"Loading..."}
-        largeFontSize={"2.5rem"}
-        midFontSize={"1.5rem"}
-        smallFontSize={"1rem"}
-      />
+        <div className="items-center">
+          <Glitch
+            text={"Loading..."}
+            largeFontSize={"2.5rem"}
+            midFontSize={"1.5rem"}
+            smallFontSize={"1rem"}
+          />
+        </div>
       ) : (
         <Projects projectsData={projectsData} />
       )}
