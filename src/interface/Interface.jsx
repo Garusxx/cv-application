@@ -5,6 +5,7 @@ import Projects from "./Projects";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Glitch from "../UI/Glitch";
+import Section from "./Section";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -39,16 +40,34 @@ export const Interface = (props) => {
   return (
     <div className="flex flex-col items-center w-screen">
       <AboutSection onSectionChange={() => onSectionChange(3)} />
-      <SkillsSection skillData={skillData} languagesData={languagesData} />
       {isLoading ? (
-        <div className="items-center">
-          <Glitch
-            text={"Loading..."}
-            largeFontSize={"2.5rem"}
-            midFontSize={"1.5rem"}
-            smallFontSize={"1rem"}
-          />
-        </div>
+        <Section>
+          <div>
+            <Glitch
+              text={"Loading..."}
+              largeFontSize={"2.5rem"}
+              midFontSize={"1.5rem"}
+              smallFontSize={"1rem"}
+            />
+            <p className="text-white">Plase refresh after 50 sec...</p>
+          </div>
+        </Section>
+      ) : (
+        <SkillsSection skillData={skillData} languagesData={languagesData} />
+      )}
+
+      {isLoading ? (
+        <Section>
+          <div>
+            <Glitch
+              text={"Loading..."}
+              largeFontSize={"2.5rem"}
+              midFontSize={"1.5rem"}
+              smallFontSize={"1rem"}
+            />{" "}
+            <p className="text-white">Plase refresh after 50 sec...</p>
+          </div>
+        </Section>
       ) : (
         <Projects projectsData={projectsData} />
       )}
