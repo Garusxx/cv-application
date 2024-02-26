@@ -3,11 +3,19 @@ import React, { useState, useEffect } from "react";
 import { Border } from "../UI/UIelements";
 import Glitch from "../UI/Glitch";
 import LuminousBorder from "../UI/LuminousBorder";
+import countapi from 'countapi-js';
 
 import "nes.css/css/nes.min.css";
 
 const AboutSection = (props) => {
   const { onSectionChange } = props;
+  const [visits, setVisits] = useState(0);
+
+  useEffect(() => {
+    countapi.visits().then((result) => {
+      setVisits(result.value);
+    });
+  }, []);
 
   return (
     <section
@@ -15,7 +23,6 @@ const AboutSection = (props) => {
     flex flex-col items-start justify-center"
     >
       <div className="w-[100%] md:w-[60%]">
-        {" "}
         <LuminousBorder>
           <h1 className="text-sm md:text-base lg:text-5xl leading-snug">
             <Glitch
@@ -64,7 +71,8 @@ const AboutSection = (props) => {
             }}
           >
             Contact me
-          </motion.button>{" "}
+          </motion.button>
+          <p className="fixed bottom-1 right-2"> V: {visits}</p>
         </LuminousBorder>
       </div>
     </section>
