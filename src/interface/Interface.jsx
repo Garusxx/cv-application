@@ -15,31 +15,66 @@ export const Interface = (props) => {
   const [skillData, setSkillData] = useState([]);
   const [languagesData, setLanguagesData] = useState([]);
   const [projectsData, setProjectsData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true); // nowy stan
+  const [visitorsData, setVisitorsData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const backend = "https://cv-back-mxac.onrender.com";
+
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get("https://cv-back-mxac.onrender.com");
+      const data = response.data;
+      if (data) {
+        setSkillData(data.skills);
+        setLanguagesData(data.languages);
+        setProjectsData(data.projects);
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const fetchDataVisitors = async () => {
+    try {
+      setIsLoading(true);
+      const response = await axios.get("https://cv-back-mxac.onrender.com/get-visitor");
+      const data = response.data;
+      if (data) {
+        setVisitorsData(data); // assuming data is an array of visitors
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  const incrementVisitors = async () => {
+    try {
+      const response = await axios.patch(
+        "https://cv-back-mxac.onrender.com/increment-visitor"
+      );
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        setIsLoading(true); // ustawienie stanu na true przed rozpoczęciem ładowania danych
-        const response = await axios.get("https://cv-back-mxac.onrender.com");
-        const data = response.data;
-        if (data) {
-          setSkillData(data.skills);
-          setLanguagesData(data.languages);
-          setProjectsData(data.projects);
-          setIsLoading(false);
-        }
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-
+    if (!localStorage.getItem("incrementVisitorsCalled")) {
+      incrementVisitors();
+      localStorage.setItem("incrementVisitorsCalled", "true");
+    }
+    fetchDataVisitors();
     fetchData();
   }, []);
 
   return (
     <div className="flex flex-col items-center w-screen">
-      <AboutSection onSectionChange={() => onSectionChange(3)} />
+      <AboutSection
+        onSectionChange={() => onSectionChange(3)}
+        visitorsData={visitorsData}
+      />
       {isLoading ? (
         <Section>
           <div>

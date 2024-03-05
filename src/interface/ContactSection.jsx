@@ -100,7 +100,8 @@ const ContactSection = () => {
             smallFontSize={"1rem"}
           />
         </div>
-        <div style={{ position: "relative", height: "600px", width: "700px" }}>
+
+        <div className="relative h-[400px] w-[300px] md:h-[600px] md:w-[700px]">
           <MainContainer>
             <ChatContainer>
               <MessageList
@@ -123,6 +124,9 @@ const ContactSection = () => {
             </ChatContainer>
           </MainContainer>
         </div>
+        <p className="mt-2 text-white text-xs">
+          I know the chat looks terrible (work in progress)
+        </p>
       </LuminousBorder>
     </Section>
   );

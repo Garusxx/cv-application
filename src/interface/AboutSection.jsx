@@ -1,21 +1,21 @@
 import { motion } from "framer-motion";
-import React, { useState, useEffect } from "react";
-import { Border } from "../UI/UIelements";
+import React, { useState, useEffect, use } from "react";
 import Glitch from "../UI/Glitch";
 import LuminousBorder from "../UI/LuminousBorder";
-import countapi from 'countapi-js';
-
 import "nes.css/css/nes.min.css";
+import { set } from "countapi-js";
 
 const AboutSection = (props) => {
-  const { onSectionChange } = props;
-  const [visits, setVisits] = useState(0);
+  const { onSectionChange, visitorsData } = props;
+  const [visitors, setVisitors] = useState('0');
 
-  useEffect(() => {
-    countapi.visits().then((result) => {
-      setVisits(result.value);
-    });
-  }, []);
+useEffect(() => {
+  if (visitorsData[0]) {
+    setVisitors(visitorsData[0].visitors);
+  }
+}, [visitorsData]);
+ 
+ 
 
   return (
     <section
@@ -72,7 +72,7 @@ const AboutSection = (props) => {
           >
             Contact me
           </motion.button>
-          <p className="fixed bottom-1 right-2"> V: {visits}</p>
+          <p className="fixed right-4 bottom-4">V: {visitors}</p>
         </LuminousBorder>
       </div>
     </section>

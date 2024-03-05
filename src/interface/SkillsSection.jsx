@@ -1,15 +1,14 @@
 import Section from "./Section";
 import { motion } from "framer-motion";
 
-
 import "nes.css/css/nes.min.css";
 import "../index.css";
 import Glitch from "../UI/Glitch";
 import LuminousBorder from "../UI/LuminousBorder";
 
 const SkillsSection = (props) => {
-
   const { skillData, languagesData } = props;
+
 
 
   return (
